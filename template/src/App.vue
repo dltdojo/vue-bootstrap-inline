@@ -2,6 +2,10 @@
   <div id="app">
     <img src="./assets/logo.png">
     <h1>\{{ msg }}</h1>
+    <b-jumbotron header="DLTDOJO" lead="vue-bootstrap-inline template" >
+      <p><a href="https://github.com/dltdojo">DLTDOJO - Github</a></p>
+      <b-btn variant="primary" href="#">More Info</b-btn>
+    </b-jumbotron>
     <h2>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
@@ -24,7 +28,7 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your DLTDOJO vue-bootstrap-inline template'
     }
   }
 }

@@ -1,3 +1,11 @@
+# dltdojo/vue-bootstrap-inline template
+
+frok from https://github.com/vuejs-templates/webpack-simple
+
+``` bash
+vue init dltdojo/vue-bootstrap-inline my-project
+```
+
 # webpack-simple
 
 > A simple Vue 2.0 Webpack & `vue-loader` setup for quick prototyping. Note this template is not suitable for production - for that you may want to use the [full webpack template](https://github.com/vuejs-templates/webpack).

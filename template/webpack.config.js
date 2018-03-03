@@ -1,5 +1,9 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -12,10 +16,10 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
+        use:ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        }),
       },{{#sass}}
       {
         test: /\.scss$/,
@@ -83,6 +87,7 @@ module.exports = {
     noInfo: true,
     overlay: true
   },
+  plugins: [new ExtractTextPlugin("main.css")],
   performance: {
     hints: false
   },
@@ -98,6 +103,12 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html.dist'
+    }),
+    new StyleExtHtmlWebpackPlugin(),
+    new ScriptExtHtmlWebpackPlugin({ inline: 'build' }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
